@@ -1,0 +1,35 @@
+.main-container {
+  max-width: 980px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  box-shadow: 0 8px 20px 0 rgba(195,210,225,.65);
+  padding: 10px;
+}
+
+h1 {
+  padding: 5px;
+}
+
+h5 {
+  vertical-align: bottom;
+  border-bottom: 2px solid #dee2e6;
+  background: #ddd;
+  padding: 5px;
+  margin-bottom: 0;
+  font-weight: 700;
+}
+
+td, th {
+  border: 1px solid #ddd;
+  padding: 8px;
+  background: #FFF;
+}
+
+th {
+  background: #ddd;
+}
