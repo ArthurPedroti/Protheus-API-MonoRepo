@@ -9,6 +9,8 @@ export default function Pro_Dash() {
   const [almoxarifados, setAlmoxarifados] = useState([]);
   const [supermecados, setSupermercados] = useState([]);
   const [quebrados, setQuebrados] = useState([]);
+  const [pos, setPos] = useState([]);
+  const [vix, setVix] = useState([]);
   const [PCs, setPCs] = useState([]);
   const [SCs, setSCs] = useState([]);
   
@@ -40,23 +42,37 @@ export default function Pro_Dash() {
           produto: product,
           armazem: '04',
         }})
-      setQuebrados(response3.data);
 
-      const response4 = await api.get('/pcs', {
+      const response4 = await api.get('/estoques', {
+        headers: {
+          filial: '0101',
+          produto: product,
+          armazem: '03',
+        }})
+      setPos(response4.data);
+
+      const response5 = await api.get('/estoques', {
+        headers: {
+          filial: '0102',
+          produto: product,
+        }})
+      setVix(response5.data);
+
+      const response6 = await api.get('/pcs', {
         headers: {
           filial: '0101',
           produto: product,
         }})
       
-      setPCs(response4.data);
+      setPCs(response6.data);
 
-      const response5 = await api.get('/scs', {
+      const response7 = await api.get('/scs', {
         headers: {
           filial: '0101',
           produto: product,
         }})
       
-      setSCs(response5.data);
+      setSCs(response7.data);
   }
 
 
@@ -128,6 +144,39 @@ export default function Pro_Dash() {
               {quebrados.map(quebrado => (
                 <tr>
                   <td>{quebrado.SALDO}</td>
+                </tr>
+              ))}
+              </tbody>
+            </Table>
+          </Col>
+          
+          <Col>
+            <Table responsive>
+              <thead>
+                <tr>
+                  <th>POS-VENDAS</th>
+                </tr>
+              </thead>
+              <tbody>
+              {pos.map(pos => (
+                <tr>
+                  <td>{pos.SALDO}</td>
+                </tr>
+              ))}
+              </tbody>
+            </Table>
+          </Col>
+          <Col>
+            <Table responsive>
+              <thead>
+                <tr>
+                  <th>FILIAL</th>
+                </tr>
+              </thead>
+              <tbody>
+              {vix.map(vix => (
+                <tr>
+                  <td>{vix.SALDO}</td>
                 </tr>
               ))}
               </tbody>

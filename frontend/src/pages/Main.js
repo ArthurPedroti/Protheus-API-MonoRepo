@@ -7,6 +7,9 @@ export default function Main() {
     <div className="login-container">
       <form>
         <h1>AGF</h1>
+        <Link to="/estoquemaq">
+          <button type="button">Estoque de Máquinas</button>
+        </Link>
         <Link to="/pcs">
           <button type="button">Pedidos de Compras</button>
         </Link>
