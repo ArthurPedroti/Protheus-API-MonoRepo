@@ -15,7 +15,6 @@ export default function PCs() {
         headers: {
           filial: '0101',
           pc: pc,
-          produto: '',
         }})
       
       setPCs(response.data);

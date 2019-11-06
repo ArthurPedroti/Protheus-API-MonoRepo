@@ -11,9 +11,7 @@ export default function EstoquesMaq() {
       const response = await api.get('/estoques', {
         headers: {
           filial: '0101,0102',
-          produto: '',
           grupo: '0500,0510,0520,0530',
-          armazem: '',
         }})
       
       setEstoques(response.data);
