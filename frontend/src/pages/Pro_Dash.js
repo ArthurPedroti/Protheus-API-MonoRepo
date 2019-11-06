@@ -19,7 +19,8 @@ export default function Pro_Dash() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    const product = productNumber.toUpperCase();
+    const product = productNumber.toUpperCase().trim();
+
       const response = await api.get('/estoques', {
         headers: {
           filial: '0101',
@@ -90,17 +91,16 @@ export default function Pro_Dash() {
         />
         <InputGroup.Append>
           <Button 
-            qvariant="outline-warning"
+            variant="outline-warning"
             onClick={handleSubmit}
             type="submit"
             >Enviar</Button>
         </InputGroup.Append>
       </InputGroup>
 
-      <Container>
         <Row>
           <Col>
-            <Table responsive>
+            <Table responsive striped bordered hover>
               <thead>
                 <tr>
                   <th>ALMOXARIFADO</th>
@@ -117,7 +117,7 @@ export default function Pro_Dash() {
           </Col>
 
           <Col>
-            <Table responsive>
+            <Table responsive striped bordered hover>
               <thead>
                 <tr>
                   <th>SUPERMECADO</th>
@@ -134,7 +134,7 @@ export default function Pro_Dash() {
           </Col>
 
           <Col>
-            <Table responsive>
+            <Table responsive striped bordered hover>
               <thead>
                 <tr>
                   <th>QUEBRADO</th>
@@ -151,7 +151,7 @@ export default function Pro_Dash() {
           </Col>
           
           <Col>
-            <Table responsive>
+            <Table responsive striped bordered hover>
               <thead>
                 <tr>
                   <th>POS-VENDAS</th>
@@ -167,7 +167,7 @@ export default function Pro_Dash() {
             </Table>
           </Col>
           <Col>
-            <Table responsive>
+            <Table responsive striped bordered hover>
               <thead>
                 <tr>
                   <th>FILIAL</th>
@@ -183,13 +183,11 @@ export default function Pro_Dash() {
             </Table>
           </Col>
         </Row>
-      </Container>
 
-      <Container>
         <Row>
           <Col>
           <h5>Pedidos de Compra</h5>
-            <Table responsive>
+            <Table responsive striped bordered hover>
               <thead>
                 <tr>
                   <th>PC</th>
@@ -216,7 +214,7 @@ export default function Pro_Dash() {
         <Row>
           <Col>
           <h5>Solicitações de Compra</h5>
-            <Table responsive>
+            <Table responsive striped bordered hover>
               
               <thead>
                 <tr>
@@ -241,7 +239,6 @@ export default function Pro_Dash() {
             </Table>
           </Col>
         </Row>
-      </Container>
       
     </div>
 

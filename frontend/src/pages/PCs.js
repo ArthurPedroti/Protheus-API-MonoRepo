@@ -38,12 +38,12 @@ export default function PCs() {
           <Button 
             onClick={handleSubmit}
             type="submit"
-            qvariant="outline-warning"
+            variant="outline-warning"
             >Enviar</Button>
         </InputGroup.Append>
       </InputGroup>
 
-      <Table responsive>
+      <Table rresponsive striped bordered hover>
         <thead>
           <tr>
             <th>ITEM</th>
