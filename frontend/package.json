@@ -17,7 +17,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "serve": "pm2 serve build 9000 --watch --spa"
+    "serve": "pm2 serve build 9000 --spa"
   },
   "eslintConfig": {
     "extends": "react-app"

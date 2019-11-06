@@ -7,7 +7,8 @@
   "license": "MIT",
   "scripts": {
     "dev": "nodemon src/server.js",
-    "serve": "pm2 start src/server.js --watch"
+    "serve": "pm2 start src/server.js",
+    "servedev": "pm2 start src/server.js --watch"
   },
   "dependencies": {
     "cors": "^2.8.5",
