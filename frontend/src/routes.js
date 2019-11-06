@@ -1,11 +1,11 @@
 import React from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 
-import Main from './pages/Main';
-import Admin from './pages/Admin';
-import EstoquesMaq from './pages/EstoquesMaq';
-import PCs from './pages/PCs';
-import Pro_Dash from './pages/Pro_Dash';
+import Main from './pages/Main.js';
+import Admin from './pages/Admin.js';
+import EstoquesMaq from './pages/EstoquesMaq.js';
+import PCs from './pages/PCs.js';
+import Pro_Dash from './pages/Pro_Dash.js';
 
 
 export default function Routes() {
