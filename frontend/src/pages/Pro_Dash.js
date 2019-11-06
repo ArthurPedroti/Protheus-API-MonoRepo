@@ -17,7 +17,8 @@ export default function Pro_Dash() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    const product = productNumber.toUpperCase();
+    const product = productNumber.toUpperCase().trim();
+
       const response = await api.get('/estoques', {
         headers: {
           filial: '0101',
@@ -74,126 +75,122 @@ export default function Pro_Dash() {
         />
         <InputGroup.Append>
           <Button 
-            qvariant="outline-warning"
+            variant="outline-warning"
             onClick={handleSubmit}
             type="submit"
             >Enviar</Button>
         </InputGroup.Append>
       </InputGroup>
 
-      <Container>
-        <Row>
-          <Col>
-            <Table responsive>
-              <thead>
-                <tr>
-                  <th>ALMOXARIFADO</th>
-                </tr>
-              </thead>
-              <tbody>
-              {almoxarifados.map(almoxarifado => (
-                <tr>
-                  <td>{almoxarifado.SALDO}</td>
-                </tr>
-              ))}
-              </tbody>
-            </Table>
-          </Col>
+      <Row>
+        <Col>
+          <Table responsive striped bordered hover>
+            <thead>
+              <tr>
+                <th>ALMOXARIFADO</th>
+              </tr>
+            </thead>
+            <tbody>
+            {almoxarifados.map(almoxarifado => (
+              <tr>
+                <td>{almoxarifado.SALDO}</td>
+              </tr>
+            ))}
+            </tbody>
+          </Table>
+        </Col>
 
-          <Col>
-            <Table responsive>
-              <thead>
-                <tr>
-                  <th>SUPERMECADO</th>
-                </tr>
-              </thead>
-              <tbody>
-              {supermecados.map(supermecado => (
-                <tr>
-                  <td>{supermecado.SALDO}</td>
-                </tr>
-              ))}
-              </tbody>
-            </Table>
-          </Col>
+        <Col>
+          <Table responsive striped bordered hover>
+            <thead>
+              <tr>
+                <th>SUPERMECADO</th>
+              </tr>
+            </thead>
+            <tbody>
+            {supermecados.map(supermecado => (
+              <tr>
+                <td>{supermecado.SALDO}</td>
+              </tr>
+            ))}
+            </tbody>
+          </Table>
+        </Col>
 
-          <Col>
-            <Table responsive>
-              <thead>
-                <tr>
-                  <th>QUEBRADO</th>
-                </tr>
-              </thead>
-              <tbody>
-              {quebrados.map(quebrado => (
-                <tr>
-                  <td>{quebrado.SALDO}</td>
-                </tr>
-              ))}
-              </tbody>
-            </Table>
-          </Col>
-        </Row>
-      </Container>
-
-      <Container>
-        <Row>
-          <Col>
-          <h5>Pedidos de Compra</h5>
-            <Table responsive>
-              <thead>
-                <tr>
-                  <th>PC</th>
-                  <th>QTD</th>
-                  <th>QTD_ENT</th>
-                  <th>DATA</th>
-                  <th>FORN</th>
-                </tr>
-              </thead>
-              <tbody>
-              {PCs.map(pc => (
-                <tr>
-                  <td>{pc.PEDIDO}</td>
-                  <td>{pc.QTD}</td>
-                  <td>{pc.QTD_ENT}</td>
-                  <td>{pc.ENTREGA}</td>
-                  <td>{pc.DESC_FORN}</td>
-                </tr>
-              ))}
-              </tbody>
-            </Table>
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-          <h5>Solicitações de Compra</h5>
-            <Table responsive>
-              
-              <thead>
-                <tr>
-                  <th>SC</th>
-                  <th>QTD</th>
-                  <th>QTD_ENT</th>
-                  <th>DATA</th>
-                  <th>OBS</th>
-                </tr>
-              </thead>
-              <tbody>
-              {SCs.map(sc => (
-                <tr>
-                  <td>{sc.SC}</td>
-                  <td>{sc.QTD}</td>
-                  <td>{sc.QTD_ENT}</td>
-                  <td>{sc.ENTREGA}</td>
-                  <td>{sc.OBS}</td>
-                </tr>
-              ))}
-              </tbody>
-            </Table>
-          </Col>
-        </Row>
-      </Container>
-      
+        <Col>
+          <Table responsive striped bordered hover>
+            <thead>
+              <tr>
+                <th>QUEBRADO</th>
+              </tr>
+            </thead>
+            <tbody>
+            {quebrados.map(quebrado => (
+              <tr>
+                <td>{quebrado.SALDO}</td>
+              </tr>
+            ))}
+            </tbody>
+          </Table>
+        </Col>
+      </Row>
+    
+      <Row>
+        <Col>
+        <h5>Pedidos de Compra</h5>
+          <Table responsive striped bordered hover>
+            <thead>
+              <tr>
+                <th>PC</th>
+                <th>QTD</th>
+                <th>QTD_ENT</th>
+                <th>DATA</th>
+                <th>FORN</th>
+              </tr>
+            </thead>
+            <tbody>
+            {PCs.map(pc => (
+              <tr>
+                <td>{pc.PEDIDO}</td>
+                <td>{pc.QTD}</td>
+                <td>{pc.QTD_ENT}</td>
+                <td>{pc.ENTREGA}</td>
+                <td>{pc.DESC_FORN}</td>
+              </tr>
+            ))}
+            </tbody>
+          </Table>
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+        <h5>Solicitações de Compra</h5>
+          <Table responsive striped bordered hover>
+            
+            <thead>
+              <tr>
+                <th>SC</th>
+                <th>QTD</th>
+                <th>QTD_ENT</th>
+                <th>DATA</th>
+                <th>OBS</th>
+              </tr>
+            </thead>
+            <tbody>
+            {SCs.map(sc => (
+              <tr>
+                <td>{sc.SC}</td>
+                <td>{sc.QTD}</td>
+                <td>{sc.QTD_ENT}</td>
+                <td>{sc.ENTREGA}</td>
+                <td>{sc.OBS}</td>
+              </tr>
+            ))}
+            </tbody>
+          </Table>
+        </Col>
+      </Row>
+    
     </div>
 
   );

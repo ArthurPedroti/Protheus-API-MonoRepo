@@ -3,35 +3,40 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #000;
+  background: rgb(16, 15, 18);
 }
 
-.login-container form {
+.login-container .main {
   width: 100%;
   max-width: 300px;
   display: flex;
   flex-direction: column;
   padding: 10px;
-  border: 0;
-  border-radius: 4px;
-  background: #FFF;
-  box-shadow: 0 2px 2px 0 rgba(45,54,65,.1), 0 1px 5px 0 rgba(45,54,65,.09), 0 3px 1px -2px rgba(45,54,65,.15)
 }
 
-.login-container form h1 {
+.login-container h1 {
   text-align: center;
   letter-spacing: 1px;
 }
 
-.login-container form button {
+.login-container button {
   width: 100%;
   margin-top: 10px;
-  border: 0;
-  border-radius: 4px;
-  height: 48px;
-  font-size:  18px;
-  background: #000;
+  color: #FFF;
+  font-size: 20px;
   font-weight: bold;
-  color: #FFE900;
-  cursor: pointer;
+  transition: all 200ms ease-in 0s;
+  background: rgb(16, 15, 18);
+  padding: 12px 15px;
+  border-width: 2px;
+  border-style: solid;
+  border-color: rgb(247, 223, 30);
+  border-image: initial;
+  border-radius: 5px;
+}
+
+.login-container button:hover {
+  transition: all 200ms ease-in 0s;
+  background: rgb(247, 223, 30);
+  color: rgb(16, 15, 18);
 }

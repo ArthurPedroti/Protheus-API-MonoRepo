@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Table } from 'react-bootstrap';
 import './EstoqueMaq.css';
 
 import api from '../services/api';
@@ -23,7 +24,7 @@ export default function EstoquesMaq() {
   
   <div className="main-container">
     <h1>Estoque de Máquinas</h1>
-    <table>
+    <Table responsive striped bordered hover>
       <thead>
         <tr>
           <th>FILIAL</th>
@@ -32,6 +33,7 @@ export default function EstoquesMaq() {
           <th>ARMAZEM</th>
         </tr>
       </thead>
+       
       <tbody>
       {estoques.map(estoque => (
         <tr>
@@ -42,7 +44,7 @@ export default function EstoquesMaq() {
         </tr>
       ))}
       </tbody>
-    </table>
+    </Table> 
   </div>
   
   );

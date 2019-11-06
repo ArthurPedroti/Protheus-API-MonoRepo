@@ -3,3 +3,9 @@
   margin: 0 auto;
   text-align: center;
 }
+h5 {
+  border: 1px solid #dee2e6;
+  padding: 12px;
+  font-weight: bold;
+  margin-bottom: 0;
+}
