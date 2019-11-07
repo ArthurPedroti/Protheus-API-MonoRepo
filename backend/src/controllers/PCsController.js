@@ -45,7 +45,7 @@ module.exports = {
                     SC7.C7_RESIDUO = '' AND
                     SC7.D_E_L_E_T_ = ''
 
-            ORDER BY SC7.C7_NUM, SC7.C7_ITEM
+            ORDER BY SC7.C7_DATPRF, SC7.C7_NUM, SC7.C7_ITEM
             `, function (err, recordset) {
             
             if (err) console.log(err)
