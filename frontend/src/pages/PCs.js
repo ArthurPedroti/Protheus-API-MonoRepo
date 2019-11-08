@@ -10,7 +10,7 @@ export default function PCs() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    const pc = pcNumber;
+    const pc = pcNumber.trim();
       const response = await api.get('/pcs', {
         headers: {
           filial: '0101',
