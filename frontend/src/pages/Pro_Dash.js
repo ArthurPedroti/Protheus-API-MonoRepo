@@ -44,6 +44,8 @@ export default function Pro_Dash() {
           armazem: '04',
         }})
 
+      setQuebrados(response3.data);
+
       const response4 = await api.get('/estoques', {
         headers: {
           filial: '0101',
