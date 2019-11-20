@@ -43,7 +43,7 @@ export default function PCs() {
         </InputGroup.Append>
       </InputGroup>
 
-      <Table rresponsive striped bordered hover>
+      <Table responsive striped bordered hover>
         <thead>
           <tr>
             <th>ITEM</th>
