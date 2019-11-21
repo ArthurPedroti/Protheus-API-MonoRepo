@@ -13,6 +13,8 @@ export default function Pro_Dash() {
   const [vix, setVix] = useState([]);
   const [PCs, setPCs] = useState([]);
   const [SCs, setSCs] = useState([]);
+  const [EMPs, setEMPs] = useState([]);
+  const [OUs, setOUs] = useState([]);
   
   // Colocar OPs, Onde Usado e opção matriz/filial
 
@@ -76,6 +78,22 @@ export default function Pro_Dash() {
         }})
       
       setSCs(response7.data);
+
+      const response8 = await api.get('/emp', {
+        headers: {
+          filial: '0101',
+          produto: product,
+        }})
+      
+      setEMPs(response8.data);
+
+      const response9 = await api.get('/ou', {
+        headers: {
+          filial: '0101',
+          produto: product,
+        }})
+      
+      setOUs(response9.data);
   }
 
 
@@ -217,7 +235,6 @@ export default function Pro_Dash() {
           <Col>
           <h5>Solicitações de Compra</h5>
             <Table responsive striped bordered hover>
-              
               <thead>
                 <tr>
                   <th>SC</th>
@@ -235,6 +252,52 @@ export default function Pro_Dash() {
                   <td>{sc.QTD_ENT}</td>
                   <td>{sc.ENTREGA}</td>
                   <td>{sc.OBS}</td>
+                </tr>
+              ))}
+              </tbody>
+            </Table>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+          <h5>Onde Usado</h5>
+            <Table responsive striped bordered hover>
+              <thead>
+                <tr>
+                  <th>EQUIPAMENTO</th>
+                  <th>QTD</th>
+                </tr>
+              </thead>
+              <tbody>
+              {OUs.map(ou => (
+                <tr>
+                  <td>{ou.CODIGO}</td>
+                  <td>{ou.QUANTIDADE}</td>
+                </tr>
+              ))}
+              </tbody>
+            </Table>
+          </Col>
+          <Col xs={8}>
+          <h5>Planejamento (próximos 10)</h5>
+            <Table responsive striped bordered hover>
+              <thead>
+                <tr>
+                  <th>EQUIP</th>
+                  <th>OP</th>
+                  <th>QTD</th>
+                  <th>ARM</th>
+                  <th>DATA</th>
+                </tr>
+              </thead>
+              <tbody>
+              {EMPs.map(emp => (
+                <tr>
+                  <td>{emp.DEC_OP}</td>
+                  <td>{emp.OP}</td>
+                  <td>{emp.SALDO}</td>
+                  <td>{emp.ARMAZEM}</td>
+                  <td>{emp.ENTREGA}</td>
                 </tr>
               ))}
               </tbody>
