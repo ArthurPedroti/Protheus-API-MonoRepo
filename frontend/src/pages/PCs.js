@@ -9,7 +9,6 @@ export default function PCs() {
   const [PCs, setPCs] = useState([]);
 
   async function handleSubmit(e) {
-    e.preventDefault();
     const pc = pcNumber.trim();
       const response = await api.get('/pcs', {
         headers: {
@@ -20,6 +19,12 @@ export default function PCs() {
       setPCs(response.data);
   }
 
+  //submit on press Enter
+  function keyPressed(event) {
+    if (event.key === "Enter") {
+      handleSubmit();
+    }
+  }
 
   
   return (
@@ -32,6 +37,7 @@ export default function PCs() {
           aria-label="Pedido de Compra"
           aria-describedby="basic-addon2"
           value={pcNumber}
+          onKeyPress={keyPressed}
           onChange={e => setpcNumber(e.target.value)}  
         />
         <InputGroup.Append>

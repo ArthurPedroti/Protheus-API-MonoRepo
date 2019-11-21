@@ -20,7 +20,6 @@ export default function Pro_Dash() {
 
 
   async function handleSubmit(e) {
-    e.preventDefault();
     const product = productNumber.toUpperCase().trim();
 
       const response = await api.get('/estoques', {
@@ -96,6 +95,12 @@ export default function Pro_Dash() {
       setOUs(response9.data);
   }
 
+  //submit on press Enter
+  function keyPressed(event) {
+    if (event.key === "Enter") {
+      handleSubmit();
+    }
+  }
 
   return (
 
@@ -107,6 +112,7 @@ export default function Pro_Dash() {
           aria-label="Código do Produto"
           aria-describedby="basic-addon2"
           value={productNumber}
+          onKeyPress={keyPressed}
           onChange={e => setProductNumber(e.target.value)}  
         />
         <InputGroup.Append>
