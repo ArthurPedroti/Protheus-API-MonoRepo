@@ -12,11 +12,20 @@ export default function Main() {
         <Link to="/estoquemaq">
           <button type="button">Estoque de Máquinas</button>
         </Link>
+        <Link to="/estoqueger">
+          <button type="button">Geradores</button>
+        </Link>
         <Link to="/pcs">
           <button type="button">Pedidos de Compras</button>
         </Link>
         <Link to="/prodash">
           <button type="button">Produtos</button>
+        </Link>
+        <Link to="/opspos">
+          <button type="button">OPs para o Pós Vendas</button>
+        </Link>
+        <Link to="/opsfilial">
+          <button type="button">OPs para a Filial</button>
         </Link>
       </Container>
     </div>
