@@ -12,29 +12,45 @@ A API served by SQL protheus database to make reports and KPIs. Using React.js a
 
 # Server Setup
 
-1º - Install Node</br>
+<h3>1º - Install Node</h3></br>
 
-```curl -sL https://deb.nodesource.com/setup_8.x -o nodesource_setup.sh
+```
+curl -sL https://deb.nodesource.com/setup_8.x -o nodesource_setup.sh
+```
+```
+sudo bash nodesource_setup.sh
+```
+```
+sudo apt install nodejs
+```
+```
+sudo apt install build-essential
 ```
 
-```sudo bash nodesource_setup.sh
+<h3>2º - Install PM2</h3>
+
 ```
-```sudo apt install nodejs
+sudo npm install pm2@latest -g
 ```
-```sudo apt install build-essential
-```
-2º - Install PM2</br>
-```sudo npm install pm2@latest -g
-```
-3º - Setting PM2 on Start Up</br>
-``pm2 startup systemd``
+
+<h3>3º - Setting PM2 on Start Up</h3>
+
+``
+pm2 startup systemd
+``
 
 When you start the services, you can save the list for restart with:</br>
-`pm2 save`
-4º - Install Yarn
-```curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+`
+pm2 save
+`
+</br>
+
+<h3>4º - Install Yarn</h3></br>
 ```
-```echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
 ```
-`sudo apt update`
-`sudo apt install --no-install-recommends yarn`
+```
+echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+```
+`sudo apt update`<br>
+`sudo apt install --no-install-recommends yarn`<br>
