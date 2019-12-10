@@ -10,14 +10,10 @@ export default function EstoquesGer() {
   const [gs165_01, setGS165_01] = useState([]);
   const [gs230_01, setGS230_01] = useState([]);
   const [gs260_01, setGS260_01] = useState([]);
-  const [gs125_03, setGS125_03] = useState([]);
-  const [gs165_03, setGS165_03] = useState([]);
-  const [gs230_03, setGS230_03] = useState([]);
-  const [gs260_03, setGS260_03] = useState([]);
-  const [gs125_04, setGS125_04] = useState([]);
-  const [gs165_04, setGS165_04] = useState([]);
-  const [gs230_04, setGS230_04] = useState([]);
-  const [gs260_04, setGS260_04] = useState([]);
+  const [gs125A_01, setGS125A_01] = useState([]);
+  const [gs165A_01, setGS165A_01] = useState([]);
+  const [gs230A_01, setGS230A_01] = useState([]);
+  const [gs260A_01, setGS260A_01] = useState([]);
 
   useEffect(() => {
     async function loadEstoques() {
@@ -28,7 +24,7 @@ export default function EstoquesGer() {
         }})
       setEstoques(response.data);
 
-        //armazem 01
+        //motores
       const response1 = await api.get('/estoques', {
         headers: {
           filial: '0101',
@@ -61,71 +57,39 @@ export default function EstoquesGer() {
         }})
       setGS260_01(response4.data);
 
-        //armazem 03
+        //alternadores
+
         const response5 = await api.get('/estoques', {
           headers: {
             filial: '0101',
-            produto: '9900001327',
+            produto: '9900001335',
             armazem: '01',
           }})
-        setGS125_03(response5.data);
-  
+        setGS125A_01(response5.data);
+
         const response6 = await api.get('/estoques', {
           headers: {
             filial: '0101',
-            produto: '9900000777',
+            produto: '9900000786',
             armazem: '01',
           }})
-        setGS165_03(response6.data);
-  
+        setGS165A_01(response6.data);
+
         const response7 = await api.get('/estoques', {
           headers: {
             filial: '0101',
-            produto: '9900000778',
+            produto: '9900000821',
             armazem: '01',
           }})
-        setGS230_03(response7.data);
-  
+        setGS230A_01(response7.data);
+
         const response8 = await api.get('/estoques', {
           headers: {
             filial: '0101',
-            produto: '9900001100',
+            produto: '9900001101',
             armazem: '01',
           }})
-        setGS260_03(response8.data);
-
-        //armazem 04
-        const response9 = await api.get('/estoques', {
-          headers: {
-            filial: '0101',
-            produto: '9900001327',
-            armazem: '01',
-          }})
-        setGS125_04(response9.data);
-  
-        const response10 = await api.get('/estoques', {
-          headers: {
-            filial: '0101',
-            produto: '9900000777',
-            armazem: '01',
-          }})
-        setGS165_04(response10.data);
-  
-        const response11 = await api.get('/estoques', {
-          headers: {
-            filial: '0101',
-            produto: '9900000778',
-            armazem: '01',
-          }})
-        setGS230_04(response11.data);
-  
-        const response12 = await api.get('/estoques', {
-          headers: {
-            filial: '0101',
-            produto: '9900001100',
-            armazem: '01',
-          }})
-        setGS260_04(response12.data);
+        setGS260A_01(response8.data);
 
     }
     loadEstoques();
@@ -159,7 +123,7 @@ export default function EstoquesGer() {
 
     <Row>
       <Col>
-      <h5>MOTORES</h5>
+      <h5>ESTOQUE MOTORES</h5>
         <Table responsive striped bordered hover>
           <thead>
             <tr>
@@ -194,8 +158,52 @@ export default function EstoquesGer() {
               <td>GS260</td>
               <td>9900001100</td>
               {gs260_01.map(gs260 => (
-              <td>{gs260.SALDO != null ? gs260.SALDO : '0'}</td>,
-              console.log(gs260.SALDO)
+              <td>{gs260.SALDO}</td>
+              ))}
+            </tr>
+          </tbody>
+        </Table>
+      </Col>
+    </Row>
+
+    <Row>
+      <Col>
+      <h5>ESTOQUE ALTERNADORES</h5>
+        <Table responsive striped bordered hover>
+          <thead>
+            <tr>
+              <th>GERADOR</th>
+              <th>CÓDIGO</th>
+              <th>SALDO</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>GS125</td>
+              <td>9900001335</td>
+              {gs125A_01.map(gs125 => (
+              <td>{gs125.SALDO}</td>
+              ))}
+            </tr>
+            <tr>
+              <td>GS165</td>
+              <td>9900000786</td>
+              {gs165A_01.map(gs165 => (
+              <td>{gs165.SALDO}</td>
+              ))}
+            </tr>
+            <tr>
+              <td>GS230</td>
+              <td>9900000821</td>
+              {gs230A_01.map(gs230 => (
+              <td>{gs230.SALDO}</td>
+              ))}
+            </tr>
+            <tr>
+              <td>GS260</td>
+              <td>9900001101</td>
+              {gs260A_01.map(gs260 => (
+              <td>{gs260.SALDO}</td>
               ))}
             </tr>
           </tbody>
