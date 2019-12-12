@@ -27,6 +27,9 @@ export default function Main() {
         <Link to="/opsfilial">
           <button type="button">OPs para a Filial</button>
         </Link>
+        <Link to="/opspp">
+          <button type="button">OPs por Ponto de Pedido</button>
+        </Link>
       </Container>
     </div>
   );

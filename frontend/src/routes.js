@@ -9,6 +9,7 @@ import Pro_Dash from './pages/Pro_Dash.js';
 import EstoquesGer from './pages/EstoqueGer';
 import OPsPosVendas from './pages/OPsPosVendas';
 import OPsFilial from './pages/OPsFilial';
+import OPsPP from './pages/OPsPP';
 
 
 export default function Routes() {
@@ -22,6 +23,7 @@ export default function Routes() {
       <Route path="/estoqueger" component={EstoquesGer} />
       <Route path="/opspos" component={OPsPosVendas} />
       <Route path="/opsfilial" component={OPsFilial} />
+      <Route path="/opspp" component={OPsPP} />
     </BrowserRouter>
   );
 }
