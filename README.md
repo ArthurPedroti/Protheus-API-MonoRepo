@@ -7,7 +7,7 @@ A API served by SQL protheus database to make reports and KPIs. Using React.js a
 2º - cd Protheus-API<br/>
 3º - git pull<br/>
 4º - cd frontend<br/>
-5º - npm run build<br/>
+5º - `npm run build` or `sudo yarn build`<br/>
 6º - pm2 restart all<br/>
 
 # Server Setup
