@@ -136,30 +136,54 @@ export default function EstoquesGer() {
             <tr>
               <td>GS125</td>
               <td>9900001327</td>
-              {gs125_01.map(gs125 => (
-              <td>{gs125.SALDO}</td>
-              ))}
+              { gs125_01.length > 0 ? (
+                <td>
+                  {gs125_01.map(gs125 => (
+                  <div>{gs125.SALDO}</div>
+                  ))}
+                </td>
+              ) : (
+                <td>0</td>
+              ) }
             </tr>
             <tr>
               <td>GS165</td>
               <td>9900000777</td>
-              {gs165_01.map(gs165 => (
-              <td>{gs165.SALDO}</td>
-              ))}
+              { gs165_01.length > 0 ? (
+                <td>
+                  {gs165_01.map(gs165 => (
+                  <div>{gs165.SALDO}</div>
+                  ))}
+                </td>
+              ) : (
+                <td>0</td>
+              ) }
             </tr>
             <tr>
               <td>GS230</td>
               <td>9900000778</td>
-              {gs230_01.map(gs230 => (
-              <td>{gs230.SALDO}</td>
-              ))}
+              { gs230_01.length > 0 ? (
+                <td>
+                  {gs230_01.map(gs230 => (
+                  <div>{gs230.SALDO}</div>
+                  ))}
+                </td>
+              ) : (
+                <td>0</td>
+              ) }
             </tr>
             <tr>
               <td>GS260</td>
               <td>9900001100</td>
-              {gs260_01.map(gs260 => (
-              <td>{gs260.SALDO}</td>
-              ))}
+              { gs260_01.length > 0 ? (
+                <td>
+                  {gs260_01.map(gs260 => (
+                  <div>{gs260.SALDO}</div>
+                  ))}
+                </td>
+              ) : (
+                <td>0</td>
+              ) }
             </tr>
           </tbody>
         </Table>
@@ -181,30 +205,54 @@ export default function EstoquesGer() {
             <tr>
               <td>GS125</td>
               <td>9900001335</td>
-              {gs125A_01.map(gs125 => (
-              <td>{gs125.SALDO}</td>
-              ))}
+              { gs125A_01.length > 0 ? (
+                <td>
+                  {gs125A_01.map(gs125 => (
+                  <div>{gs125.SALDO}</div>
+                  ))}
+                </td>
+              ) : (
+                <td>0</td>
+              ) }
             </tr>
             <tr>
               <td>GS165</td>
               <td>9900000786</td>
-              {gs165A_01.map(gs165 => (
-              <td>{gs165.SALDO}</td>
-              ))}
+              { gs165A_01.length > 0 ? (
+                <td>
+                  {gs165A_01.map(gs165 => (
+                  <div>{gs165.SALDO}</div>
+                  ))}
+                </td>
+              ) : (
+                <td>0</td>
+              ) }
             </tr>
             <tr>
               <td>GS230</td>
               <td>9900000821</td>
-              {gs230A_01.map(gs230 => (
-              <td>{gs230.SALDO}</td>
-              ))}
+              { gs230A_01.length > 0 ? (
+                <td>
+                  {gs230A_01.map(gs230 => (
+                  <div>{gs230.SALDO}</div>
+                  ))}
+                </td>
+              ) : (
+                <td>0</td>
+              ) }
             </tr>
             <tr>
               <td>GS260</td>
               <td>9900001101</td>
-              {gs260A_01.map(gs260 => (
-              <td>{gs260.SALDO}</td>
-              ))}
+              { gs260A_01.length > 0 ? (
+                <td>
+                  {gs260A_01.map(gs260 => (
+                  <div>{gs260.SALDO}</div>
+                  ))}
+                </td>
+              ) : (
+                <td>0</td>
+              ) }
             </tr>
           </tbody>
         </Table>
