@@ -339,7 +339,7 @@ export default function Pro_Dash() {
             </Table>
           </Col>
           <Col xs={8}>
-          <h5>Planejamento (próximos 10)</h5>
+          <h5>Planejamento (Empenhos)</h5>
             <Table responsive striped bordered hover>
               <thead>
                 <tr>
