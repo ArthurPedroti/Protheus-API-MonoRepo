@@ -23,7 +23,7 @@ module.exports = {
         // query to the database and get the records
         await request.query(
             `
-            SELECT  TOP(10)
+            SELECT  
                     RTRIM(SD4.D4_COD) AS CODIGO,
                     RTRIM(SB1.B1_DESC) AS DESCRICAO,
                     SD4.D4_LOCAL AS ARMAZEM,

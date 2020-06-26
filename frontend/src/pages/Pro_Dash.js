@@ -11,6 +11,8 @@ export default function Pro_Dash() {
   const [quebrados, setQuebrados] = useState([]);
   const [pos, setPos] = useState([]);
   const [vix, setVix] = useState([]);
+  const [stockWarehouse06, setStockWarehouse06] = useState([]);
+  const [productInfo, setProductInfo] = useState([]);
   const [PCs, setPCs] = useState([]);
   const [SCs, setSCs] = useState([]);
   const [EMPs, setEMPs] = useState([]);
@@ -61,6 +63,20 @@ export default function Pro_Dash() {
           produto: product,
         }})
       setVix(response5.data);
+
+      const stockWarehouse06Data = await api.get('/estoques', {
+        headers: {
+          filial: '0101',
+          produto: product,
+          armazem: '06',
+        }})
+      setStockWarehouse06(stockWarehouse06Data.data);
+
+      const productInfoResponse = await api.get('/register', {
+        headers: {
+          produto: product,
+        }})
+      setProductInfo(productInfoResponse.data);
 
       const response6 = await api.get('/pcs', {
         headers: {
@@ -123,7 +139,28 @@ export default function Pro_Dash() {
             >Enviar</Button>
         </InputGroup.Append>
       </InputGroup>
-
+      <Row>
+          <Col>
+            <Table responsive striped bordered hover>
+              <thead>
+                <tr>
+                  <th>DESCRIÇÃO</th>
+                  <th>PP</th>
+                  <th>LE</th>
+                </tr>
+              </thead>
+              <tbody>
+              {productInfo.map(product => (
+                <tr>
+                  <td>{product.DESCRICAO}</td>
+                  <td>{product.PP}</td>
+                  <td>{product.LE}</td>
+                </tr>
+              ))}
+              </tbody>
+            </Table>
+          </Col>
+        </Row>
         <Row>
           <Col>
             <Table responsive striped bordered hover>
@@ -153,6 +190,23 @@ export default function Pro_Dash() {
               {supermecados.map(supermecado => (
                 <tr>
                   <td>{supermecado.SALDO}</td>
+                </tr>
+              ))}
+              </tbody>
+            </Table>
+          </Col>
+
+          <Col>
+            <Table responsive striped bordered hover>
+              <thead>
+                <tr>
+                  <th>ARMAZEM 06</th>
+                </tr>
+              </thead>
+              <tbody>
+              {stockWarehouse06.map(stockWarehouse06 => (
+                <tr>
+                  <td>{stockWarehouse06.SALDO}</td>
                 </tr>
               ))}
               </tbody>

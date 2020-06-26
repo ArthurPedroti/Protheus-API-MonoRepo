@@ -4,14 +4,18 @@ module.exports = {
   async index(req, res) {
     const request = new sql.Request();
 
-    const { filial, produto } = req.headers;
+    const { filial, op, produto } = req.headers;
 
     if(filial!=null) {
-      filial_condition = `SG1.G1_FILIAL IN (${filial}) AND`;
+      filial_condition = `SD4.D4_FILIAL IN (${filial}) AND`;
     } else {filial_condition = ``;};
 
+    if(op!=null) {
+      op_condition = `SD4.D4_OP = ('${op}') AND`;
+    } else {op_condition = ``;};
+
     if(produto!=null) {
-      produto_condition = `SG1.G1_COMP IN ('${produto}') AND`;
+      produto_condition = `SB1.B1_COD IN ('${produto}') AND`;
     } else {produto_condition = ``;};
            
     //CONCAT(SUBSTRING(SC2.C2_DATPRI,7,2),'/',SUBSTRING(SC2.C2_DATPRI,5,2),'/',SUBSTRING(SC2.C2_DATPRI,1,4)) AS ENTREGA
@@ -20,17 +24,15 @@ module.exports = {
         await request.query(
             `
             SELECT  
-                    RTRIM(SG1.G1_COD) AS CODIGO,
-                    RTRIM(SG1.G1_COMP) AS COMPONENTE,
-                    SG1.G1_QUANT AS QUANTIDADE
+                    RTRIM(SB1.B1_DESC) AS DESCRICAO,
+                    SB1.B1_EMIN AS PP,
+                    SB1.B1_LE AS LE
 
-            FROM	  SG1010 AS SG1
+            FROM	  SB1010 AS SB1 
 
-            WHERE	  ${filial_condition}
-                    ${produto_condition}
-                    SG1.D_E_L_E_T_ = ''
+            WHERE	  ${produto_condition}
+                    SB1.D_E_L_E_T_ = ''
 
-            ORDER BY SG1.G1_COMP
             `, function (err, recordset) {
             
             if (err) console.log(err)
