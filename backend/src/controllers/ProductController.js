@@ -23,14 +23,16 @@ module.exports = {
         // query to the database and get the records
         await request.query(
             `
-            SELECT
-                    RTRIM(SB1.B1_DESC) AS DESCRICAO,
-                    SB1.B1_EMIN AS PP,
-                    SB1.B1_LE AS LE  
+            SELECT  
+                    RTRIM(SB1.B1_COD) AS codigo,
+                    RTRIM(SB1.B1_DESC) AS descricao,
+                    SB1.B1_GRUPO AS grupo,
+                    RTRIM(SBM.BM_DESC) AS desc_grupo
 
-            FROM	  SB1010 AS SB1 
+            FROM	  SB1010 AS SB1 INNER JOIN
+                    SBM010 AS SBM ON SBM.D_E_L_E_T_ = '' AND SBM.BM_GRUPO = SB1.B1_GRUPO
 
-            WHERE	  ${produto_condition}
+            WHERE	  
                     SB1.D_E_L_E_T_ = ''
 
             `, function (err, recordset) {
