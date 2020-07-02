@@ -4,15 +4,16 @@ module.exports = {
   async index(req, res) {
     const request = new sql.Request();
 
-    const { filial, op, produto } = req.headers;
+    const { filial, grupo, produto } = req.headers;
 
     if(filial!=null) {
-      filial_condition = `SD4.D4_FILIAL IN (${filial}) AND`;
+      filial_condition = `SB1.B1_FILIAL IN (${filial}) AND`;
     } else {filial_condition = ``;};
 
-    if(op!=null) {
-      op_condition = `SD4.D4_OP = ('${op}') AND`;
-    } else {op_condition = ``;};
+    if(grupo!=null) {
+      grupo_condition = `SB1.B1_GRUPO IN ('${grupo}') AND`;
+    } else {grupo_condition = ``;};
+    console.log(grupo_condition)
 
     if(produto!=null) {
       produto_condition = `SB1.B1_COD IN ('${produto}') AND`;
@@ -32,8 +33,14 @@ module.exports = {
             FROM	  SB1010 AS SB1 INNER JOIN
                     SBM010 AS SBM ON SBM.D_E_L_E_T_ = '' AND SBM.BM_GRUPO = SB1.B1_GRUPO
 
-            WHERE	  
+            WHERE
+                    ${filial_condition}
+                    ${grupo_condition}
+                    ${produto_condition}
+                	  SB1.B1_MSBLQL = '2' AND
                     SB1.D_E_L_E_T_ = ''
+            
+            ORDER BY grupo
 
             `, function (err, recordset) {
             
