@@ -31,7 +31,7 @@ module.exports = {
                     RTRIM(SBM.BM_DESC) AS desc_grupo
 
             FROM	  SB1010 AS SB1 INNER JOIN
-                    SBM010 AS SBM ON SBM.D_E_L_E_T_ = '' AND SBM.BM_GRUPO = SB1.B1_GRUPO
+                    SBM010 AS SBM ON SBM.D_E_L_E_T_ = '' AND SBM.BM_FILIAL = '01' AND SBM.BM_GRUPO = SB1.B1_GRUPO
 
             WHERE
                     ${filial_condition}
