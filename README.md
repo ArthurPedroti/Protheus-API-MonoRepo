@@ -1,5 +1,5 @@
 <h1 align="center">
-  <img alt="Protheus-API" src="protheus-api.PNG" width="400px" style="border-radius:16px;"/>
+  <img alt="Protheus-API" src="protheus-api.PNG" width="800px" style="border-radius:16px;"/>
 </h1>
 
 <h3 align="center" >
