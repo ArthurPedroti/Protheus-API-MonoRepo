@@ -1,10 +1,12 @@
 <h1 align="center">
-  <img alt="ASA" src="./protheus-api.png" width="400px" style="border-radius:16px;"/>
+  <img alt="Protheus-API" src="protheus-api.png" width="400px" style="border-radius:16px;"/>
 </h1>
 
 <h3 align="center" >
   An API in Node, powered by SQL protheus database, and a React application to show the data.
 </h3>
+
+<p align="center">
 
   <a href="https://github.com/ArthurPedroti" target="_blank">
     <img alt="Made by Arthur Pedroti" src="https://img.shields.io/badge/made%20by-Arthur_Pedroti-informational">
