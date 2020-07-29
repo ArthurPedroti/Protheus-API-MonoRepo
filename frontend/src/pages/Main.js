@@ -18,6 +18,9 @@ export default function Main() {
         <Link to="/pcs">
           <button type="button">Pedidos de Compras</button>
         </Link>
+        <Link to="/scs">
+          <button type="button">Solicitações de Compras</button>
+        </Link>
         <Link to="/prodash">
           <button type="button">Produtos</button>
         </Link>
