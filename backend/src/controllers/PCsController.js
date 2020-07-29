@@ -41,7 +41,6 @@ module.exports = {
             WHERE	  ${pc_condition}
                     ${filial_condition}
                     ${produto_condition}
-                    SC7.C7_QUANT <> SC7.C7_QUJE AND
                     SC7.C7_RESIDUO = '' AND
                     SC7.D_E_L_E_T_ = ''
 
