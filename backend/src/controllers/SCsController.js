@@ -4,7 +4,7 @@ module.exports = {
   async index(req, res) {
     const request = new sql.Request();
 
-    const { filial, sc, produto } = req.headers;
+    const { filial, sc, produto, finalizado } = req.headers;
 
     if(filial!=null) {
       filial_condition = `SC1.C1_FILIAL IN (${filial}) AND`;
@@ -17,6 +17,10 @@ module.exports = {
     if(produto!=null) {
       produto_condition = `SC1.C1_PRODUTO IN ('${produto}') AND`;
     } else {produto_condition = ``;};
+
+    if(finalizado!=null && finalizado) {
+      finalizado_condition = `SC1.C1_QUANT <> SC1.C1_QUJE AND`;
+    } else {finalizado_condition = ``;};
            
         // query to the database and get the records
         await request.query(
@@ -29,16 +33,19 @@ module.exports = {
                     SC1.C1_QUANT AS QTD,
                     SC1.C1_QUJE AS QTD_ENT,
                     RTRIM(SC1.C1_OBS) AS OBS,
-                    CONCAT(SUBSTRING(SC1.C1_DATPRF,7,2),'/',SUBSTRING(SC1.C1_DATPRF,5,2),'/',SUBSTRING(SC1.C1_DATPRF,1,4)) AS ENTREGA
+                    CONCAT(SUBSTRING(SC1.C1_DATPRF,7,2),'/',SUBSTRING(SC1.C1_DATPRF,5,2),'/',SUBSTRING(SC1.C1_DATPRF,1,4)) AS ENTREGA,
+                    SC1.C1_PEDIDO AS PC,
+                    CONCAT(SUBSTRING(SC7.C7_DATPRF,7,2),'/',SUBSTRING(SC7.C7_DATPRF,5,2),'/',SUBSTRING(SC7.C7_DATPRF,1,4)) AS PC_ENTREGA
 
             FROM	  SC1010 AS SC1 INNER JOIN
                     SB1010 AS SB1 ON SB1.D_E_L_E_T_ = '' AND SB1.B1_COD = SC1.C1_PRODUTO LEFT OUTER JOIN
-                    SA2010 AS SA2 ON SA2.D_E_L_E_T_ = '' AND SA2.A2_COD = SC1.C1_FORNECE
+                    SA2010 AS SA2 ON SA2.D_E_L_E_T_ = '' AND SA2.A2_COD = SC1.C1_FORNECE LEFT OUTER JOIN
+                    SC7010 AS SC7 ON SC7.D_E_L_E_T_ = '' AND ((SC7.C7_NUM = SC1.C1_PEDIDO) AND (SC7.C7_ITEM = SC1.C1_ITEMPED))
 
             WHERE	  ${sc_condition}
                     ${filial_condition}
                     ${produto_condition}
-                    SC1.C1_QUANT <> SC1.C1_QUJE AND
+                    ${finalizado_condition}
                     SC1.C1_RESIDUO = '' AND
                     SC1.D_E_L_E_T_ = ''
 

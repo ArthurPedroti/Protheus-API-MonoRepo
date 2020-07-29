@@ -60,6 +60,7 @@ export default function PCs() {
             <th>QTD_ENT</th>
             <th>PREÇO</th>
             <th>OBS</th>
+            <th>ENTREGA</th>
             <th>FORN</th>
             <th>DESC_FORN</th>
           </tr>
@@ -75,6 +76,7 @@ export default function PCs() {
             <td>{pcs.QTD_ENT}</td>
             <td>R${pcs.PRECO}</td>
             <td>{pcs.OBS}</td>
+            <td>{pcs.ENTREGA}</td>
             <td>{pcs.FORN}</td>
             <td>{pcs.DESC_FORN}</td>
           </tr>

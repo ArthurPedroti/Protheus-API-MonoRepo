@@ -4,7 +4,7 @@ module.exports = {
   async index(req, res) {
     const request = new sql.Request();
 
-    const { filial, pc, produto } = req.headers;
+    const { filial, pc, produto, finalizado } = req.headers;
 
     if(filial!=null) {
       filial_condition = `SC7.C7_FILIAL IN (${filial}) AND`;
@@ -17,12 +17,18 @@ module.exports = {
     if(produto!=null) {
       produto_condition = `SC7.C7_PRODUTO IN ('${produto}') AND`;
     } else {produto_condition = ``;};
+
+    if(finalizado!=null && finalizado) {
+      finalizado_condition = `SC7.C7_QUANT <> SC7.C7_QUJE AND`;
+    } else {finalizado_condition = ``;};
            
         // query to the database and get the records
         await request.query(
             `
             SELECT  SC7.C7_NUM AS PEDIDO,	
                     SC7.C7_ITEM AS ITEM,
+                    SC7.C7_CONAPRO AS APROVADO,
+                    CONCAT(SUBSTRING(SC7.C7_EMISSAO,7,2),'/',SUBSTRING(SC7.C7_EMISSAO,5,2),'/',SUBSTRING(SC7.C7_EMISSAO,1,4)) AS EMISSAO,
                     RTRIM(SC7.C7_PRODUTO) AS PRODUTO,
                     RTRIM(SB1.B1_DESC) AS DESCRICAO,
                     SC7.C7_UM AS UM,
@@ -41,6 +47,7 @@ module.exports = {
             WHERE	  ${pc_condition}
                     ${filial_condition}
                     ${produto_condition}
+                    ${finalizado_condition}
                     SC7.C7_RESIDUO = '' AND
                     SC7.D_E_L_E_T_ = ''
 

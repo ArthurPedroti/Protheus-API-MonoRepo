@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Table, Button, InputGroup, FormControl, Row, Col } from 'react-bootstrap';
+import { Table, Button, InputGroup, FormControl, Row, Col, Badge } from 'react-bootstrap';
 import './Pro_Dash.css';
 
 import api from '../services/api';
@@ -82,6 +82,7 @@ export default function Pro_Dash() {
         headers: {
           filial: '0101',
           produto: product,
+          finalizado: true,
         }})
       
       setPCs(response6.data);
@@ -90,6 +91,7 @@ export default function Pro_Dash() {
         headers: {
           filial: '0101',
           produto: product,
+          finalizado: true,
         }})
       
       setSCs(response7.data);
@@ -270,6 +272,8 @@ export default function Pro_Dash() {
             <Table responsive striped bordered hover>
               <thead>
                 <tr>
+                  <th>EMISSÃO</th>
+                  <th>APROVAÇÃO</th>
                   <th>PC</th>
                   <th>QTD</th>
                   <th>QTD_ENT</th>
@@ -280,6 +284,8 @@ export default function Pro_Dash() {
               <tbody>
               {PCs.map(pc => (
                 <tr>
+                  <td>{pc.EMISSAO}</td>
+                  <td>{pc.APROVADO === 'L' ?  <Badge variant="success">SIM</Badge> : <Badge variant="danger">NÃO</Badge>}</td>
                   <td>{pc.PEDIDO}</td>
                   <td>{pc.QTD}</td>
                   <td>{pc.QTD_ENT}</td>
