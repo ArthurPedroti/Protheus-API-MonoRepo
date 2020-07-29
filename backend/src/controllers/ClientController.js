@@ -19,9 +19,11 @@ module.exports = {
                     RTRIM(SA1.A1_MUN) AS municipio,
                     RTRIM(SA1.A1_EST) AS uf,
                     RTRIM(SA1.A1_CEP) AS cep,
+                    RTRIM(SA1.A1_CONTATO) AS contato,
+                    RTRIM(SA1.A1_EMAIL) AS email,
                     RTRIM(SA1.A1_TEL) AS telefone
 
-            FROM	  SA1010 AS SA1
+            FROM    SA1010 AS SA1
 
             WHERE	  
                     SA1.D_E_L_E_T_ = ''
