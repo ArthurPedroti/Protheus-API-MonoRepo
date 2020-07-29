@@ -273,7 +273,7 @@ export default function Pro_Dash() {
               <thead>
                 <tr>
                   <th>EMISSÃO</th>
-                  <th>APROVAÇÃO</th>
+                  <th>APROVADO</th>
                   <th>PC</th>
                   <th>QTD</th>
                   <th>QTD_ENT</th>
@@ -303,6 +303,7 @@ export default function Pro_Dash() {
             <Table responsive striped bordered hover>
               <thead>
                 <tr>
+                  <th>EMISSÃO</th>
                   <th>SC</th>
                   <th>QTD</th>
                   <th>QTD_ENT</th>
@@ -313,6 +314,7 @@ export default function Pro_Dash() {
               <tbody>
               {SCs.map(sc => (
                 <tr>
+                  <td>{sc.EMISSAO}</td>
                   <td>{sc.SC}</td>
                   <td>{sc.QTD}</td>
                   <td>{sc.QTD_ENT}</td>

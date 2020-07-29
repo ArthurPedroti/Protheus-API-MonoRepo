@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Table, Button, InputGroup, FormControl } from 'react-bootstrap';
+import React, { useState, useEffect } from 'react';
+import { Table, Button, InputGroup, FormControl, Badge } from 'react-bootstrap';
 import './PCs.css';
 
 import api from '../services/api';
@@ -7,6 +7,7 @@ import api from '../services/api';
 export default function PCs() {
   const [pcNumber, setpcNumber] = useState('');
   const [PCs, setPCs] = useState([]);
+  const [sumPCs, setSumPCs] = useState([]);
 
   async function handleSubmit(e) {
     const pc = pcNumber.trim();
@@ -18,6 +19,13 @@ export default function PCs() {
       
       setPCs(response.data);
   }
+  
+  useEffect(() => {
+    const mapPCs = PCs.map(pc => pc.PRECO * (pc.QTD - pc.QTD_ENT));
+    const sumPCs =
+    mapPCs.length > 0 ? mapPCs.reduce((a, b) => a + b) : 0;
+    setSumPCs(sumPCs)
+  }, [PCs])
 
   //submit on press Enter
   function keyPressed(event) {
@@ -52,6 +60,7 @@ export default function PCs() {
       <Table responsive striped bordered hover>
         <thead>
           <tr>
+            <th>APROVADO</th>
             <th>ITEM</th>
             <th>PRODUTO</th>
             <th>DESCRIÇÃO</th>
@@ -68,6 +77,7 @@ export default function PCs() {
         <tbody>
         {PCs.map(pcs => (
           <tr>
+            <td>{pcs.APROVADO === 'L' ?  <Badge variant="success">SIM</Badge> : <Badge variant="danger">NÃO</Badge>}</td>
             <td>{pcs.ITEM}</td>
             <td>{pcs.PRODUTO}</td>
             <td>{pcs.DESCRICAO}</td>
@@ -83,6 +93,10 @@ export default function PCs() {
         ))}
         </tbody>
       </Table>
+      <h3>Total do pedido: {sumPCs.toLocaleString('pt-br', {
+        style: 'currency',
+        currency: 'BRL',
+      })}</h3>
       
     </div>
 
