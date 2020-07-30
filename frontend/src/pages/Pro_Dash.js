@@ -306,7 +306,7 @@ export default function Pro_Dash() {
                   <th>EMISSÃO</th>
                   <th>SC</th>
                   <th>QTD</th>
-                  <th>QTD_ENT</th>
+                  <th>QTD_ATEND</th>
                   <th>DATA</th>
                   <th>OBS</th>
                 </tr>
