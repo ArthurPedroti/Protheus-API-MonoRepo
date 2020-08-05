@@ -178,7 +178,7 @@ export default function Pro_Dash() {
                   <th>DESCRIÇÃO</th>
                   <th>UM</th>
                   <th>PP</th>
-                  <th>ESTOQUE SEGURANÇA</th>
+                  <th>EST_SEG</th>
                   <th>LE</th>
                 </tr>
               </thead>
