@@ -178,8 +178,8 @@ export default function Pro_Dash() {
                   <th>DESCRIÇÃO</th>
                   <th>UM</th>
                   <th>PP</th>
-                  <th>EST_SEG</th>
                   <th>LE</th>
+                  <th>EST_SEG</th>
                 </tr>
               </thead>
               <tbody>
@@ -188,8 +188,8 @@ export default function Pro_Dash() {
                   <td>{product.DESCRICAO}</td>
                   <td>{product.UM}</td>
                   <td>{product.PP}</td>
-                  <td>{product.ESTSEG}</td>
                   <td>{product.LE}</td>
+                  <td>{product.ESTSEG}</td>
                 </tr>
               ))}
               </tbody>
