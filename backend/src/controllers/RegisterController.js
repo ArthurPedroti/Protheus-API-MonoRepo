@@ -28,7 +28,6 @@ module.exports = {
                     SB1.B1_EMIN AS PP,
                     SB1.B1_LE AS LE,
                     SB1.B1_UM AS UM,
-                    SB1.B1_APROPRI AS APROPI,
                     SB1.B1_ESTSEG AS ESTSEG
 
             FROM	  SB1010 AS SB1 

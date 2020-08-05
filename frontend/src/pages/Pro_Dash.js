@@ -176,7 +176,9 @@ export default function Pro_Dash() {
               <thead>
                 <tr>
                   <th>DESCRIÇÃO</th>
+                  <th>UM</th>
                   <th>PP</th>
+                  <th>ESTOQUE SEGURANÇA</th>
                   <th>LE</th>
                 </tr>
               </thead>
@@ -184,7 +186,9 @@ export default function Pro_Dash() {
               {productInfo.map(product => (
                 <tr>
                   <td>{product.DESCRICAO}</td>
+                  <td>{product.UM}</td>
                   <td>{product.PP}</td>
+                  <td>{product.ESTSEG}</td>
                   <td>{product.LE}</td>
                 </tr>
               ))}
