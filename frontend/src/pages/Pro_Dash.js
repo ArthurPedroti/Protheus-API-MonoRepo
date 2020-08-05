@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Table, Button, InputGroup, FormControl, Row, Col, Badge } from 'react-bootstrap';
 import './Pro_Dash.css';
 
@@ -17,9 +17,38 @@ export default function Pro_Dash() {
   const [SCs, setSCs] = useState([]);
   const [EMPs, setEMPs] = useState([]);
   const [OUs, setOUs] = useState([]);
+  const [sumEmp, setSumEmp] = useState('');
+  const [sumSCs, setSumSCs] = useState('');
+  const [sumPCs, setSumPCs] = useState('');
+  const [saldoPrev, setSaldoPrev] = useState('');
+
+  useEffect(() => {
+    const mapEmpenhos = EMPs.map(emp => emp.SALDO);
+    const sumEmpenhos =
+        mapEmpenhos.length > 0
+              ? Number(parseFloat(mapEmpenhos.reduce((a, b) => a + b)).toFixed(2))
+              : 0;
+    setSumEmp(sumEmpenhos);
+
+    const mapSCs = SCs.map(sc => sc.QTD - sc.QTD_ENT);
+    const sumSCs =
+        mapSCs.length > 0
+              ? Number(parseFloat(mapSCs.reduce((a, b) => a + b)).toFixed(2))
+              : 0;
+    setSumSCs(sumSCs);
+    
+    const mapPCs = PCs.map(pc => pc.QTD - pc.QTD_ENT);
+    const sumPCs =
+        mapPCs.length > 0
+              ? Number(parseFloat(mapPCs.reduce((a, b) => a + b)).toFixed(2))
+              : 0;
+    setSumPCs(sumPCs);
+
+    const saldo = (almoxarifados[0] !== undefined ? almoxarifados[0].SALDO : 0) + sumPCs + sumSCs - sumEmp
+    setSaldoPrev(Number(parseFloat(saldo).toFixed(2)));
+  }, [EMPs, PCs, SCs, almoxarifados, sumEmp])
   
   // Colocar OPs, Onde Usado e opção matriz/filial
-
 
   async function handleSubmit(e) {
     const product = productNumber.toUpperCase().trim();
@@ -172,11 +201,11 @@ export default function Pro_Dash() {
                 </tr>
               </thead>
               <tbody>
-              {almoxarifados.map(almoxarifado => (
-                <tr>
-                  <td>{almoxarifado.SALDO}</td>
-                </tr>
-              ))}
+                {almoxarifados.map(almoxarifado => (
+                  <tr>
+                    <td>{almoxarifado.SALDO}</td>
+                  </tr>
+                ))}
               </tbody>
             </Table>
           </Col>
@@ -265,7 +294,28 @@ export default function Pro_Dash() {
             </Table>
           </Col>
         </Row>
-
+        <Row>
+          <Col>
+            <Table responsive striped bordered hover>
+              <thead>
+                <tr>
+                  <th>Total Empenhado</th>
+                  <th>Total em SC</th>
+                  <th>Total em PC</th>
+                  <th>Saldo (previsto)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>{sumEmp}</td>
+                  <td>{sumSCs}</td>
+                  <td>{sumPCs}</td>
+                  <td>{saldoPrev}</td>
+                </tr>
+              </tbody>
+            </Table>
+          </Col>
+        </Row>
         <Row>
           <Col>
           <h5>Pedidos de Compra</h5>
