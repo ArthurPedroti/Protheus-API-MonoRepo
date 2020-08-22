@@ -1,5 +1,5 @@
 {
-  "name": "NodeSQL",
+  "name": "protheus-api",
   "version": "1.0.0",
   "main": "index.js",
   "repository": "https://github.com/ArthurPedroti/NodeSQL.git",
